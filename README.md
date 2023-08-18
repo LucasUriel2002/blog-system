@@ -1,2 +1,2 @@
 # blog-system
-this repository will be a attempt to make a blog like system to storage text and images in a DB 
+this repository will be an attempt to make a blog like system to store text and images in a DB
