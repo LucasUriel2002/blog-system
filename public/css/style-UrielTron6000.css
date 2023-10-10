@@ -1,0 +1,309 @@
+/*
++=============+
+     Fonts
++=============+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/*
++=============+
+   Variables
++=============+
+*/
+
+:root {
+    /*Primary colors*/
+ 
+    
+    /* Fonts */
+    --Monoton: 'Monoton', cursive;
+    --Lexend: 'Lexend', sans-serif;
+    --Lexend-Giga: 'Lexend Giga', sans-serif;
+    --Poppins: 'Poppins', sans-serif;
+    /* other variables */
+    --spacing-gap: 0.5rem;
+    }
+    
+/*
++=============+
+Geral Configs
++=============+
+*/
+body {
+    font-family: 'Poppins';
+    text-decoration: none;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    margin: 0;
+}
+
+button {
+    font-family: 'Poppins';
+}
+
+textarea {
+    resize: vertical;
+}
+
+.center-sec {
+    /* visibility: hidden; Just to work better in the navbar */
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: black 1px solid ;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* .first-top-item {
+    font-size: 30pt;
+} */
+
+/*
++=============+
+Navbar
++=============+
+*/
+
+/* navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 2%;
+    left: 0;
+    right: 0;
+  
+}
+
+.logo {
+    font-family: var(--Monoton);
+    font-size: 50px;
+    margin-left: 80px; 
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.59);
+}
+
+.nav-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 238px;
+    height: 50px;
+    margin-right: 80px;
+    font-family: var(--Lexend);
+    font-size: 20px;
+    background-color: white;
+    border-radius: 30px;
+    /* padding: 5px 30px 5px 30px; */
+}
+
+.nav-btn-1 {
+    position: fixed;
+    margin-right: 110px;
+}
+
+.nav-btn-2 {
+    position: fixed;
+    margin-left: 110px;
+}
+
+.nav-btn-1:hover {
+    font-weight: bold;
+}
+
+.nav-btn-2:hover {
+    font-weight: bold;
+}
+
+/*
++=============+
+Background Image Config 
++=============+
+*/
+
+.index {
+    height: 2300px;
+    background-image: url('/images/snow-mountain.png');
+    background-position: -80px -110px;
+    background-repeat: no-repeat;
+}
+
+.addPosts-index {
+    /* height: 100%; */
+    background-position: -80px -1500px;
+    /* overflow-x: hidden; */
+}
+
+/*
++=============+
+Footer
++=============+
+*/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    background-color: grey;
+    position: absolute;
+    top: 2300px;
+
+}
+
+/*
++=============+
+Index
++=============+
+*/
+
+
+
+.cloud-1 {
+    position: absolute;
+    opacity: 50%;
+    width: 1000px;
+    height: 560px;
+    top: 900px;
+    left: 900px;
+    z-index: -1;
+}
+
+.cloud-2 {
+    position: absolute;
+    /* opacity: 50%; */
+    width: 1000px;
+    height: 560px;
+    top: 1400px;
+    left: 200px;
+    z-index: -1;
+}
+
+
+/* Centralize the title */
+.title-container {
+    position: absolute;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: -2;
+  }
+  
+.index-title {
+    text-align: center;
+    font-size: 64px;
+    font-family: var(--Lexend-Giga);
+} 
+
+/* posts-containers */
+.posts-sec {
+    position: absolute;
+    align-items: center;
+    left: 20%;
+    top: 160%;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+}
+
+.posts-index ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    padding: 0;
+}
+
+.posts-index li {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 0.55);
+}
+
+.posts-index li .post-preview-text p {
+    position: absolute; 
+    bottom: 10px; /* Align the text to the bottom */
+    width: 100%; 
+}
+
+.posts-index img {
+    object-fit:cover;
+    height: 150px;
+    width: 250px;
+}
+
+.post-preview-text {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 30px;
+}
+
+.post-preview-text span {
+    font-family: var(--Lexend);
+    font-size: 30px; 
+    margin-top: 5px;
+    word-wrap: break-word;
+    width: 90%;
+}
+
+.post-preview-text p {
+    font-family: var(--Poppins);
+    font-size: 10px; 
+    color: gray;
+    margin: 0;
+}
+
+.glass-button {
+    margin-top: 20px;
+    padding: 5px 15px;
+    font-family: var(--Lexend);
+    font-size: 20px;
+    border: 1px solid grey;
+    cursor: pointer;
+    border-radius: 10px;
+    color: black;
+    transition: transform 0.3s;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70));
+}
+
+.glass-button:hover {
+    transform: translateY(-5px);
+}
+
+/*
++=============+
+Form Config 
++=============+
+*/
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-gap);
+  
+}
+
+.form-title {
+    text-align: center;
+    font-size: 64px;
+    font-family: var(--Lexend-Giga);
+}

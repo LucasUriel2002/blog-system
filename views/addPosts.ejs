@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Blog-System</title>
+        <link rel="stylesheet"  href="/public/css/style.css">
+
+    </head>
+    <body class="index addPosts-index">
+
+    <div class="navbar">
+
+        <div class="logo">B</div>
+
+        <div class="nav-btns">
+
+            <a class="nav-btn-1"href="/" style="color: green;">
+                <label for="submit-label">Done</label>
+            </a>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+            <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+            </svg>
+            <a class="nav-btn-2" href="/" style="color: red;">Cancel</a>
+        </div>
+        
+        </div>
+
+        <section class="center-sec">
+            <h3 class="form-title">ADD A NEW POST</h3>
+            <form class="post-form" action="/add-post" method="POST" enctype="multipart/form-data">
+            <label class="i-1" for="post-image-input">Image</label>
+            <input class="i-2" type="file" id="post-image-input" name="image" required>   
+            <p class="i-3">Title</p>
+            <input class="i-4" id="post-title-input" type="text" name="title" required>
+            <p class="i-5">Text</p>
+            <textarea class="i-6" id="post-text-input" type="text" rows="5" cols="22" name="text" required></textarea>
+            <div class=""></div>
+            <p class="i-6">Author</p>
+            <input class="i-7" id="post-author-input" type="text" name="author" required>
+            <button class="i-8" id="submit-label" class="submitBtn" type="submit">Submit</button>
+            </form>
+
+        <!-- Error Message -->
+    
+        <p id="errorMessage"></p>
+
+        </section>
+
+        
+
+    </body>
+    <script src="/public/js/script.js"></script>
+</html>

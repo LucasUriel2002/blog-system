@@ -1,0 +1,47 @@
+<!-- managePosts.ejs -->
+<!DOCTYPE html>
+<head>
+  
+  <link rel="stylesheet"  href="/public/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="center-sec">
+    <h1>Manage Posts!</h1>
+
+    <ul>
+      <% posts.forEach((post) => { %>
+        <li>
+          <h2><%= post.title %></h2>
+          <p><%= post.text %></p>
+          <p>Autor: <%= post.author %></p>
+          <p>Data de Publicação: <%= formatDate(post.timestamp) %></p>
+          <a href="/edit-post/<%= post.id %>">Editar</a>
+          <a href="/delete-post/<%= post.id %>">Excluir</a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+
+
+
+<script>
+  // Use the history object to manipulate the navigation history
+  window.history.pushState(null, null, document.URL);
+  
+  // Event listener for the popstate event (triggered when the user presses the browser's "Back" button)
+  window.addEventListener('popstate', () => {
+  // Add a new entry to the navigation history to keep the browser's "Back" button working
+    window.history.pushState(null, null, document.URL);
+    
+  // Redirect to the index page when the browser's "Back" button is pressed
+    window.location.href = '/'; 
+  });
+</script>
+
+<script src="/public/js/script.js"></script>
+
+</html>
