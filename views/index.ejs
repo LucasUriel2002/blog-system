@@ -3,22 +3,96 @@
     <head>
 
         <title>Blog-System</title>
-        <link rel="stylesheet"  href="css/style.css">
+        <link rel="stylesheet"  href="/public/css/style.css">
 
     </head>
-    <body>
-        <div class="post-exibit">
-            <h1>Blog Posts</h1>
+    <body class="index">
+
+      <div class="navbar">
+
+        <div class="logo">B</div>
+
+        <div class="nav-btns">
+          <a class="nav-btn-1" href="/add-post">+ Add</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+            <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+          </svg>
+          <a class="nav-btn-2" href="/manage-posts">Manage</a>
+        </div>
+
+      </div>
+      <div class="title-container">
+        <h1 class="index-title">SIMPLE BLOG</h1>
+      </div>
+
+      <img class="cloud-1" src="public/images/cloud (1).png" alt="decorative cloud">
+      <img class="cloud-2" src="public/images/cloud (2).png" alt="decorative cloud">
+      
+  
+<section class="posts-sec">
+      <div class="recent-posts posts-index">
+          <h2>Recent posts</h2>
+          <ul>
+              <% top5RecentPosts.forEach(post => { %>
+                <li class="p-test">
+                  <a href="/post/<%= post.id %>/view" class="post-link">
+                    <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
+                    <div class="post-preview-text">
+                        <span><%= post.title %></span>
+                        <p><%= formatDate(post.timestamp) %></p>
+                    </div>
+                </a>
+                </li>
+              <% }); %>
+            </ul>
+      </div>
+
+        <div class="post-exibit posts-index">
+            <h2>top posts</h2>
             <ul>
-                <% posts.forEach(post => { %>
-                  <li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
-                <% }); %>
-              </ul>
+              <% topPosts.forEach((post, i) => { %>
+                <li class="<%= i === 0 ? 'first-top-item' : '' %>">
+                  <a href="/post/<%= post.id %>/view" class="post-link">
+                    <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
+                    <div class="post-preview-text">
+                        <span><%= post.title %></span>
+                        <p><%= formatDate(post.timestamp) %></p>
+                    </div>
+                </a>
+                </li>
+              <% }); %>
+            </ul>
         </div>
-        <div class="add-post-here">
-            
-            <a href="/add-post">Add a new post here!</a>
-        </div>
+        <a href="/allPosts" class="button-container">
+          <button class="glass-button">More!</button>
+        </a>
+       
+  </section>
+
+<footer>
+
+<div class="">
+  <p>made by Lucas Uriel</p>
+  <p>Computer Science Student</p>
+  <p>Contact me!</p>
+  <a href="">lucas.uriel2002@gmail.com</a>
+  <a href="">Linkedin</a>
+  <a href="">GitHub</a>
+</div>
+
+<div class="">
+  <p>SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT 
+    SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE  TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT 
+    ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT </p>
+</div>
+
+<div class="">
+  <p>SIMPLE BLOG</p>
+  <div class="logo">B</div>
+</div>
+
+</footer>
+
     </body>
-    <script src="script.js"></script>
+    <script src="/public/js/script.js"></script>
 </html>
