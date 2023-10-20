@@ -136,7 +136,7 @@ Background Image Config
 */
 
 .index {
-    height: 2300px;
+    height: 100vh; /* Mantém a altura igual à altura da viewport */
     background-image: url('/images/snow-mountain.png');
     background-position: -80px -110px;
     background-repeat: no-repeat;
@@ -158,11 +158,35 @@ footer {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 200px;
-    background-color: grey;
+    height: 100px;
+    background-color: #d9d9d9;
     position: absolute;
     top: 2300px;
+    overflow: hidden;
+    font-family: var(--Poppins);
+    justify-content: space-between;
+    padding-top: 10px;
+}   
 
+.contact-info{
+    font-size: 8pt;
+    line-height: 5px;
+    margin-left: 15px;
+
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social :hover {
+    font-weight: bolder;
+}
+
+.project-text {
+    width: 15vw;
 }
 
 /*
