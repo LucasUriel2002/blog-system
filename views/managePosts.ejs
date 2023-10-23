@@ -1,26 +1,25 @@
-<!-- managePosts.ejs -->
-
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
-<body class="manage-posts">
+<body class="manage-posts manage-posts-index">
 
   <div class="navbar">
     <div class="logo">B</div>
     <div class="nav-btns">
       <a class="nav-btn-1" href="/add-post">+ Add</a>
       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
-        <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+        <line x1="5" y1="0" x2="5" y2="30" stroke="white" />
       </svg>
       <a class="nav-btn-2" href="/manage-posts">Manage</a>
     </div>
   </div>
 
-  <div class="center-sec posts-index">
-    <h1>Manage Posts!</h1>
+  <h1 class="index-title" style="margin-top: 30px;">MANAGE POSTS</h1>
 
+  <div class="center-sec posts-index manage-posts-container">
+    
     <ul>
       <% posts.forEach((post) => { %>
         <li class="p-test">
@@ -28,34 +27,60 @@
             <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>">
             <div class="post-preview-text">
               <span><%= post.title %></span>
+              <div class="edit-delete">
+                <a href="/edit-post/<%= post.id %>">Editar</a>
+                <a href="/delete-post/<%= post.id %>">Excluir</a>
+              </div>
               <p><%= formatDate(post.timestamp) %></p>
           </div> 
+        
         </a>
         </li>
       <% }); %>
     </ul>
-
+   
     <div class="pagination">
       <% for (let i = 1; i <= totalPages; i++) { %>
         <a href="/manage-posts/<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
       <% } %>
     </div>
     <p>Total Pages: <%= totalPages %></p>
-</body>
+  </div>
 
-<script>
-  // Use the history object to manipulate the navigation history
-  window.history.pushState(null, null, document.URL);
-  
-  // Event listener for the popstate event (triggered when the user presses the browser's "Back" button)
-  window.addEventListener('popstate', () => {
-    // Add a new entry to the navigation history to keep the browser's "Back" button working
-    window.history.pushState(null, null, document.URL);
+  <footer>
+
+    <div class="contact-info">
     
-    // Redirect to the index page when the browser's "Back" button is pressed
-    window.location.href = '/'; 
-  });
-</script>
+    
+        <p style="font-weight: bold;">made by Lucas Uriel</p>
+        <p>Computer Science Student</p>
+    
+    
+     
+    
+        <p style="margin-top: 15px;">Contact me!</p>
+        <a href="">lucas.uriel2002@gmail.com</a>
+    
+        <div class="social">
+          <a href="https://www.linkedin.com/in/lucas-uriel/">Linkedin</a>
+          <p>|</p>
+          <a href="https://github.com/LucasUriel2002">GitHub</a>
+        </div>
+      
+    </div>
+    
+    <div class="project-text">
+      <p>SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE
+         PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT  </p>
+    </div>
+    
+    <div class="">
+      <p>SIMPLE BLOG</p>
+      <div class="logo">B</div>
+    </div>
+    
+    </footer>
+</body>
 
 <script src="/public/js/script.js"></script>
 

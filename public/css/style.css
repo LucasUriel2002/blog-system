@@ -62,9 +62,8 @@ textarea {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    border: black 1px solid ;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 10px 60px 10px 60px;
+    
 }
 
 
@@ -142,6 +141,24 @@ Background Image Config
     background-position: -80px -110px;
     background-repeat: no-repeat;
 }
+
+.manage-posts-index {
+    background-image: url('/images/pexels-walid-ahmad-847402.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: -px -300px; */
+    /* overflow-x: hidden; */
+}
+
+.all-posts-index {
+    background-image: url('/images/pexels-yaroslav-shuraev-1834399.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -800px;
+    /* background-position: -px -300px; */
+    /* overflow-x: hidden; */
+}
+
 
 .addPosts-index {
     /* height: 100%; */
@@ -260,7 +277,7 @@ Index
     position: relative;
     width: 250px;
     height: 250px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     overflow: hidden;
     box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 0.55);
 }
@@ -346,7 +363,15 @@ Manage Posts and Posts Config
 +=============+
 */
 
-.manage-posts ul {
+  .manage-posts {
+    color: white;
+    }
+
+  .manage-posts a {  
+    color: white;
+   }
+
+  .manage-posts ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Define 4 colunas por linha */
     gap: 20px; /* Espaço entre os posts */
@@ -358,6 +383,8 @@ Manage Posts and Posts Config
   .manage-posts li {
     text-align: left;
     box-sizing: border-box;
+    background-color: rgba(34, 15, 14,1 );
+    box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 1);
   }
   
   /* Estilos específicos para os elementos dentro de cada post na página managePosts.ejs */
@@ -378,6 +405,100 @@ Manage Posts and Posts Config
   .manage-posts .post-list a:hover {
     text-decoration: underline;
   }
+
+  .manage-posts .nav-btns {
+    background-color: rgba(34, 15, 14, 0.9);
+  }
+
+  .manage-posts footer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(34, 15, 14, 1);
+    position: absolute;
+    top: 837px;
+    overflow: hidden;
+    font-family: var(--Poppins);
+    justify-content: space-between;
+    padding-top: 10px;
+}   
+
+ .edit-delete {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+ }
+
+
+
+ /*
++=============+
+All Posts Configs 
++=============+
+*/
+
+  .all-posts {
+    color: white;
+    width: 100%; /* Defina largura total para a seção pai */
+    }
+
+  .all-posts a {  
+    color: white;
+   }
+
+  .all-posts ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Define 4 colunas por linha */
+    gap: 20px; /* Espaço entre os posts */
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Estilos para cada post individual na página managePosts.ejs */
+  .all-posts li {
+    text-align: left;
+    box-sizing: border-box;
+    background-color: rgba(50, 30, 10, 1);
+    box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 1);
+  }
+  
+  /* Estilos específicos para os elementos dentro de cada post na página managePosts.ejs */
+  .all-posts .post-list h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .all-posts .post-list p {
+    margin: 10px 0;
+  }
+  
+  .all-posts .post-list a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  
+  .all-posts .post-list a:hover {
+    text-decoration: underline;
+  }
+
+  .all-posts .nav-btns {
+    background-color: rgba(50, 30, 10, 1);
+  }
+
+  .all-posts footer {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(50, 30, 10, 1);
+    position: absolute;
+    top: 837px;
+    overflow: hidden;
+    font-family: var(--Poppins);
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-left: 0; /* Remova a margem esquerda */
+    right: 0; /* Adicione esta linha para alinhar o rodapé à margem direita */
+}
 /*
 +=============+
 Media Adjustments

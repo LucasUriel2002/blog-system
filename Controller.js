@@ -134,17 +134,36 @@ function getTop4RecentPosts(callback) {
 }
 
 // Get All Recent Posts
-function getAllRecentPosts(callback) {
+// Get All Recent Posts
+// Get All Recent Posts with Pagination
+function getAllRecentPosts(page, postsPerPage, callback) {
   const db = new sqlite3.Database("blog.db");
+  const offset = (page - 1) * postsPerPage;
 
   db.all(
-    "SELECT id, title, timestamp, image_path, views FROM posts ORDER BY timestamp DESC",
+    "SELECT id, title, timestamp, image_path, views FROM posts ORDER BY timestamp DESC LIMIT ? OFFSET ?",
+    [postsPerPage, offset],
     (error, posts) => {
-      callback(error, posts);
+      if (error) {
+        callback(error, null, 0); // 0 totalPages in case of an error
+      } else {
+        // Calculate the total number of posts
+        db.get(
+          "SELECT COUNT(*) as count FROM posts",
+          (countError, countRow) => {
+            if (countError) {
+              callback(countError, null, 0); // 0 totalPages in case of an error
+            } else {
+              const totalPosts = countRow.count;
+              const totalPages = Math.ceil(totalPosts / postsPerPage);
+              callback(null, posts, totalPages);
+            }
+          }
+        );
+      }
+      db.close();
     }
   );
-
-  db.close();
 }
 
 // Register Views

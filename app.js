@@ -94,67 +94,58 @@ app.get("/manage-posts", (req, res) => {
 });
 
 app.get("/manage-posts/:page", (req, res) => {
-  const pageNumber = parseInt(req.params.page, 10) || 1; // Página padrão é 1
+  const pageNumber = parseInt(req.params.page, 10) || 1;
+  const postsPerPage = 8;
 
-  postController.getAllRecentPosts((error, posts) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send("Error retrieving posts");
-      return;
+  postController.getAllRecentPosts(
+    pageNumber,
+    postsPerPage,
+    (error, posts, totalPages) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send("Error retrieving posts");
+        return;
+      }
+
+      res.locals.formatDate = postController.formatDate;
+
+      res.render("managePosts", {
+        posts: posts,
+        totalPages: totalPages,
+        currentPage: pageNumber,
+      });
     }
-
-    const postsPerPage = 8; // Posts per Page
-    const totalPages = Math.ceil(posts.length / postsPerPage);
-
-    // Calcular o índice de início e fim das postagens a serem exibidas na página atual
-    const startIndex = (pageNumber - 1) * postsPerPage;
-    const endIndex = startIndex + postsPerPage;
-
-    const postsToDisplay = posts.slice(startIndex, endIndex); // Postagens a serem exibidas na página atual
-
-    res.locals.formatDate = postController.formatDate;
-
-    res.render("managePosts", {
-      posts: postsToDisplay,
-      totalPages,
-      currentPage: pageNumber,
-    });
-  });
+  );
 });
 
-// Routes to manage posts
 app.get("/posts", (req, res) => {
   // Redirecionar para a primeira página
   res.redirect("/posts/1");
 });
 
 app.get("/posts/:page", (req, res) => {
-  const pageNumber = parseInt(req.params.page, 10) || 1; // Página padrão é 1
+  const pageNumber = parseInt(req.params.page, 10) || 1;
+  const postsPerPage = 8;
 
-  postController.getAllRecentPosts((error, posts) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send("Error retrieving posts");
-      return;
+  postController.getAllRecentPosts(
+    pageNumber,
+    postsPerPage,
+    (error, posts, totalPages) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send("Error retrieving posts");
+        return;
+      }
+
+      res.locals.formatDate = postController.formatDate;
+
+      res.render("posts", {
+        posts: posts,
+        totalPages: totalPages,
+        currentPage: pageNumber,
+      });
     }
-
-    const postsPerPage = 8; // Número de postagens por página
-    const totalPages = Math.ceil(posts.length / postsPerPage);
-
-    // Calcular o índice de início e fim das postagens a serem exibidas na página atual
-    const startIndex = (pageNumber - 1) * postsPerPage;
-    const endIndex = startIndex + postsPerPage;
-
-    const postsToDisplay = posts.slice(startIndex, endIndex); // Postagens a serem exibidas na página atual
-
-    res.locals.formatDate = postController.formatDate;
-
-    res.render("posts", {
-      posts: postsToDisplay,
-      totalPages,
-      currentPage: pageNumber,
-    });
-  });
+  );
 });
 
 // Route to Edit Posts
