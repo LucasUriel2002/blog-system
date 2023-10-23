@@ -24,6 +24,7 @@
     --Poppins: 'Poppins', sans-serif;
     /* other variables */
     --spacing-gap: 0.5rem;
+    --x: 433;
     }
     
 /*
@@ -186,7 +187,8 @@ footer {
 }
 
 .project-text {
-    width: 15vw;
+    font-size: 8pt;
+    width: 30vw;
 }
 
 /*
@@ -194,7 +196,6 @@ footer {
 Index
 +=============+
 */
-
 
 
 .cloud-1 {
@@ -238,19 +239,21 @@ Index
 /* posts-containers */
 .posts-sec {
     position: absolute;
-    align-items: center;
-    left: 20%;
-    top: 160%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    width: 1200px;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    bottom: -1340px; /* 1080p 100%*/
 }
 
 .posts-index ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
     gap: 30px;
     padding: 0;
+    justify-content: center; /* Centralizar os itens horizontalmente */
 }
 
 .posts-index li {
@@ -295,6 +298,11 @@ Index
     margin: 0;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
 .glass-button {
     margin-top: 20px;
     padding: 5px 15px;
@@ -330,4 +338,78 @@ Form Config
     text-align: center;
     font-size: 64px;
     font-family: var(--Lexend-Giga);
+}
+
+/*
++=============+
+Manage Posts and Posts Config 
++=============+
+*/
+
+.manage-posts ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Define 4 colunas por linha */
+    gap: 20px; /* Espaço entre os posts */
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Estilos para cada post individual na página managePosts.ejs */
+  .manage-posts li {
+    text-align: left;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos específicos para os elementos dentro de cada post na página managePosts.ejs */
+  .manage-posts .post-list h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .manage-posts .post-list p {
+    margin: 10px 0;
+  }
+  
+  .manage-posts .post-list a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  
+  .manage-posts .post-list a:hover {
+    text-decoration: underline;
+  }
+/*
++=============+
+Media Adjustments
++=============+
+*/
+
+
+/* 1080p notebook 125% zoom */
+@media (min-device-width: 900px) and (max-width: 1550px) { 
+
+    :root {
+        --x: 345; /* Value of the Title Function */
+      }
+
+    .posts-sec {
+        bottom: -1665px; 
+        left: 50%; 
+        transform: translateX(-50%) scale(0.7); 
+        max-width: 1200px;
+    }
+
+    .posts-index li {
+        margin: 0 10px 0 10px; 
+    }
+    
+    .index-title {
+        font-size: 40px; 
+        margin-top: 18px;     
+    } 
+
+    .index {
+        background-position: -280px -210px;    
+    }
+       
 }

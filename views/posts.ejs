@@ -1,46 +1,48 @@
 <!-- managePosts.ejs -->
+
 <!DOCTYPE html>
 <head>
-  
-  <link rel="stylesheet"  href="/public/css/style.css">
-
+  <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
-<body>
+<body class="manage-posts">
 
-  <div class="center-sec">
-    <h1>Manage Posts!</h1>
+  <div class="navbar">
+    <div class="logo">B</div>
+    <div class="nav-btns">
+      <a class="nav-btn-1" href="/add-post">+ Add</a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+        <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+      </svg>
+      <a class="nav-btn-2" href="/manage-posts">Manage</a>
+    </div>
+  </div>
+
+  <div class="center-sec posts-index">
+    <h1>All Posts!</h1>
 
     <ul>
       <% posts.forEach((post) => { %>
-        <li>
-          <h2><%= post.title %></h2>
-          <p><%= post.text %></p>
-          <p>Autor: <%= post.author %></p>
-          <p>Data de Publicação: <%= formatDate(post.timestamp) %></p>
-          <a href="/edit-post/<%= post.id %>">Editar</a>
-          <a href="/delete-post/<%= post.id %>">Excluir</a>
+        <li class="p-test">
+          <a href="/post/<%= post.id %>/view" class="post-link"></a>
+            <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>">
+            <div class="post-preview-text">
+              <span><%= post.title %></span>
+              <p><%= formatDate(post.timestamp) %></p>
+          </div> 
+        </a>
         </li>
       <% }); %>
     </ul>
-  </div>
+   
+    <div class="pagination">
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <a href="/posts/<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+      <% } %>
+    </div>
+    <p>Total Pages: <%= totalPages %></p>
 </body>
 
-
-
-<script>
-  // Use the history object to manipulate the navigation history
-  window.history.pushState(null, null, document.URL);
-  
-  // Event listener for the popstate event (triggered when the user presses the browser's "Back" button)
-  window.addEventListener('popstate', () => {
-  // Add a new entry to the navigation history to keep the browser's "Back" button working
-    window.history.pushState(null, null, document.URL);
-    
-  // Redirect to the index page when the browser's "Back" button is pressed
-    window.location.href = '/'; 
-  });
-</script>
 
 <script src="/public/js/script.js"></script>
 

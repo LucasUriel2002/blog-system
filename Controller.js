@@ -136,9 +136,14 @@ function getTop4RecentPosts(callback) {
 // Get All Recent Posts
 function getAllRecentPosts(callback) {
   const db = new sqlite3.Database("blog.db");
-  db.all("SELECT * FROM posts ORDER BY timestamp DESC", (error, posts) => {
-    callback(error, posts);
-  });
+
+  db.all(
+    "SELECT id, title, timestamp, image_path, views FROM posts ORDER BY timestamp DESC",
+    (error, posts) => {
+      callback(error, posts);
+    }
+  );
+
   db.close();
 }
 

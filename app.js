@@ -12,10 +12,13 @@ const app = express();
 app.use(express.static("public"));
 app.use("/public", express.static("public"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // ---- Body-Parser Config ----
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // ---- View Engine Config ----
 app.set("view engine", "ejs");
+
 // ---- Multer Image Upload Config ----
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -33,7 +36,6 @@ app.get("/images/:imageName", (req, res) => {
   const imageName = req.params.imageName;
   const imagePath = path.join(__dirname, "uploads", imageName);
 
-  // Verifique se o arquivo da imagem existe e envie-o como resposta
   if (fs.existsSync(imagePath)) {
     res.sendFile(imagePath);
   } else {
@@ -65,14 +67,14 @@ app.get("/", (req, res) => {
     });
   });
 });
-// ---- route to Add posts
+
+// Route to Add posts
 app.get("/add-post", (req, res) => {
   res.render("addPosts");
 });
 
 app.post("/add-post", upload.single("image"), (req, res) => {
   const { title, text, author } = req.body;
-
   const imagePath = req.file.path;
 
   postController.addPost(title, text, author, imagePath, (error, postID) => {
@@ -85,9 +87,15 @@ app.post("/add-post", upload.single("image"), (req, res) => {
   });
 });
 
-// ---- routes to manage posts
-
+// Routes to manage posts
 app.get("/manage-posts", (req, res) => {
+  // Redirecionar para a primeira página
+  res.redirect("/manage-posts/1");
+});
+
+app.get("/manage-posts/:page", (req, res) => {
+  const pageNumber = parseInt(req.params.page, 10) || 1; // Página padrão é 1
+
   postController.getAllRecentPosts((error, posts) => {
     if (error) {
       console.log(error);
@@ -95,11 +103,61 @@ app.get("/manage-posts", (req, res) => {
       return;
     }
 
+    const postsPerPage = 8; // Posts per Page
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+
+    // Calcular o índice de início e fim das postagens a serem exibidas na página atual
+    const startIndex = (pageNumber - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+
+    const postsToDisplay = posts.slice(startIndex, endIndex); // Postagens a serem exibidas na página atual
+
     res.locals.formatDate = postController.formatDate;
 
-    res.render("managePosts", { posts });
+    res.render("managePosts", {
+      posts: postsToDisplay,
+      totalPages,
+      currentPage: pageNumber,
+    });
   });
 });
+
+// Routes to manage posts
+app.get("/posts", (req, res) => {
+  // Redirecionar para a primeira página
+  res.redirect("/posts/1");
+});
+
+app.get("/posts/:page", (req, res) => {
+  const pageNumber = parseInt(req.params.page, 10) || 1; // Página padrão é 1
+
+  postController.getAllRecentPosts((error, posts) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send("Error retrieving posts");
+      return;
+    }
+
+    const postsPerPage = 8; // Número de postagens por página
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+
+    // Calcular o índice de início e fim das postagens a serem exibidas na página atual
+    const startIndex = (pageNumber - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+
+    const postsToDisplay = posts.slice(startIndex, endIndex); // Postagens a serem exibidas na página atual
+
+    res.locals.formatDate = postController.formatDate;
+
+    res.render("posts", {
+      posts: postsToDisplay,
+      totalPages,
+      currentPage: pageNumber,
+    });
+  });
+});
+
+// Route to Edit Posts
 
 app.get("/edit-post/:id", (req, res) => {
   const postId = req.params.id;
@@ -146,7 +204,7 @@ app.get("/delete-post/:id", (req, res) => {
   });
 });
 
-// ---- route acesses added posts ----
+// Route accesses added posts
 app.get("/post/:id", function (req, res) {
   const postID = req.params.id;
 
@@ -164,8 +222,7 @@ app.get("/post/:id", function (req, res) {
   });
 });
 
-// ---- route acesses all posts ----
-
+// Route accesses all posts
 app.get("/allPosts", (req, res) => {
   postController.getAllRecentPosts((error, posts) => {
     if (error) {
@@ -180,7 +237,7 @@ app.get("/allPosts", (req, res) => {
   });
 });
 
-// ---- route to register views in a post----
+// Route to register views in a post
 app.get("/post/:id/view", (req, res) => {
   const postID = req.params.id;
 
