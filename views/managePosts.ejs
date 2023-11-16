@@ -6,11 +6,13 @@
 <body class="manage-posts manage-posts-index">
 
   <div class="navbar">
-    <div class="logo">B</div>
+    <a href="/">
+      <div class="logo">B</div>
+      </a>
     <div class="nav-btns">
       <a class="nav-btn-1" href="/add-post">+ Add</a>
       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
-        <line x1="5" y1="0" x2="5" y2="30" stroke="white" />
+        <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
       </svg>
       <a class="nav-btn-2" href="/manage-posts">Manage</a>
     </div>
@@ -18,13 +20,14 @@
 
   <h1 class="index-title" style="margin-top: 30px;">MANAGE POSTS</h1>
 
-  <div class="center-sec posts-index manage-posts-container">
+  <div class="center-sec posts-index posts-sec">
     
     <ul>
       <% posts.forEach((post) => { %>
         <li class="p-test">
-          <a href="/post/<%= post.id %>/view" class="post-link"></a>
+          <a href="/post/<%= post.id %>/view" class="post-link">
             <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>">
+          </a>
             <div class="post-preview-text">
               <span><%= post.title %></span>
               <div class="edit-delete">
@@ -33,18 +36,18 @@
               </div>
               <p><%= formatDate(post.timestamp) %></p>
           </div> 
-        
-        </a>
         </li>
       <% }); %>
     </ul>
    
-    <div class="pagination">
+    <div class="pagination center-sec">
+
       <% for (let i = 1; i <= totalPages; i++) { %>
         <a href="/manage-posts/<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
       <% } %>
+
     </div>
-    <p>Total Pages: <%= totalPages %></p>
+
   </div>
 
   <footer>
@@ -74,8 +77,8 @@
          PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT  </p>
     </div>
     
-    <div class="">
-      <p>SIMPLE BLOG</p>
+    <div class="footer-logo">
+      <p>SIMPLE </br> BLOG</p>
       <div class="logo">B</div>
     </div>
     

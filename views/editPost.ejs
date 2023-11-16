@@ -9,7 +9,7 @@
     </head>
     <body>
         
-        <section class="center-sec">
+        <!-- <section class="center-sec">
             <h3>Edit a post</h3>
             <form class="post-form" action="/edit-post/<%= post.id %>" method="POST">
             <p>Title</p>
@@ -20,6 +20,32 @@
             <input id="post-author-input" type="text" name="author" required value="<%= post.author %>">
             <button class="submitBtn" type="submit">Submit</button>
             </form>
+        </section> -->
+
+
+        <section class="center-sec add-post-form">
+
+           
+            <form class="post-form" action="/edit-post/<%= post.id %>" method="POST">  
+
+            <p class="i-1">TITLE</p>
+            <p class="i-2">IMAGE</p>
+            <input class="i-3" id="post-title-input" type="text" name="title" required value="<%= post.title %>">
+            <label class="i-4 custom-file-label" for="post-image-input">Escolher arquivo</label>
+            <input class="image-input" type="file" id="post-image-input" name="image" required>
+
+            <p class="i-5">TEXT</p>
+            <textarea class="i-6" id="post-text-input" type="text" rows="5" cols="22" name="text" required><%= post.text %></textarea>
+    
+            <p class="i-7">AUTHOR</p>
+            <input class="i-8" id="post-author-input" type="text" name="author" required value="<%= post.author %>">
+            <button class="i-9" id="submit-label" class="submitBtn" type="submit">Submit</button>
+            </form>
+
+        <!-- Error Message -->
+    
+        <p id="errorMessage"></p>
+
         </section>
 
         

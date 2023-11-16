@@ -7,11 +7,13 @@
         <link rel="stylesheet"  href="/public/css/style.css">
 
     </head>
-    <body class="index addPosts-index">
+    <body class="index add-posts-index">
 
     <div class="navbar">
 
-        <div class="logo">B</div>
+        <a href="/">
+            <div class="logo">B</div>
+            </a>
 
         <div class="nav-btns">
 
@@ -27,19 +29,23 @@
         
         </div>
 
-        <section class="center-sec">
-            <h3 class="form-title">ADD A NEW POST</h3>
-            <form class="post-form" action="/add-post" method="POST" enctype="multipart/form-data">
-            <label class="i-1" for="post-image-input">Image</label>
-            <input class="i-2" type="file" id="post-image-input" name="image" required>   
-            <p class="i-3">Title</p>
-            <input class="i-4" id="post-title-input" type="text" name="title" required>
-            <p class="i-5">Text</p>
+        <section class="center-sec add-post-form">
+
+           
+            <form class="post-form" action="/add-post" method="POST" enctype="multipart/form-data">  
+
+            <p class="i-1">TITLE</p>
+            <p class="i-2">IMAGE</p>
+            <input class="i-3" id="post-title-input" type="text" name="title" required>
+            <label class="i-4 custom-file-label" for="post-image-input">Escolher arquivo</label>
+            <input class="image-input" type="file" id="post-image-input" name="image" required>
+
+            <p class="i-5">TEXT</p>
             <textarea class="i-6" id="post-text-input" type="text" rows="5" cols="22" name="text" required></textarea>
-            <div class=""></div>
-            <p class="i-6">Author</p>
-            <input class="i-7" id="post-author-input" type="text" name="author" required>
-            <button class="i-8" id="submit-label" class="submitBtn" type="submit">Submit</button>
+    
+            <p class="i-7">AUTHOR</p>
+            <input class="i-8" id="post-author-input" type="text" name="author" required>
+            <button class="i-9 submitBtn" id="submit-label" type="submit">Submit</button>
             </form>
 
         <!-- Error Message -->

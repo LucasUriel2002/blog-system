@@ -1,108 +1,178 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Blog-System</title>
-        <link rel="stylesheet"  href="/public/css/style.css">
 
+        <!--icon import-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <!--Css-->
+        <link rel="stylesheet"  href="/public/css/style.css">
+        
     </head>
+
     <body class="index">
 
-      <div class="navbar">
 
-        <div class="logo">B</div>
+    <section> <!--screen 1 -->
+        <div class="navbar">
+          <a href="">
+          <div class="logo">B</div>
+          </a>
+          <div class="nav-btns">
+            <a class="nav-btn-1" href="/add-post">+ Add</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+              <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+            </svg>
+            <a class="nav-btn-2" href="/manage-posts">Manage</a>
+          </div>
 
-        <div class="nav-btns">
-          <a class="nav-btn-1" href="/add-post">+ Add</a>
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
-            <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
-          </svg>
-          <a class="nav-btn-2" href="/manage-posts">Manage</a>
+        </div>
+        <div class="title-container">
+          <h1 class="index-title">SIMPLE BLOG</h1>
         </div>
 
-      </div>
-      <div class="title-container">
-        <h1 class="index-title">SIMPLE BLOG</h1>
-      </div>
+        <img class="cloud-1" src="public/images/cloud (1).png" alt="decorative cloud">
+        <img class="cloud-2" src="public/images/cloud (2).png" alt="decorative cloud">
 
-      <img class="cloud-1" src="public/images/cloud (1).png" alt="decorative cloud">
-      <img class="cloud-2" src="public/images/cloud (2).png" alt="decorative cloud">
-      
-  
-<section class="posts-sec">
-      <div class="recent-posts posts-index">
-          <h2>Recent posts</h2>
-          <ul>
-              <% top5RecentPosts.forEach(post => { %>
-                <li class="p-test">
-                  <a href="/post/<%= post.id %>/view" class="post-link">
-                    <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
-                    <div class="post-preview-text">
-                        <span><%= post.title %></span>
-                        <p><%= formatDate(post.timestamp) %></p>
-                    </div>
-                </a>
-                </li>
-              <% }); %>
-            </ul>
-      </div>
-
-        <div class="post-exibit posts-index">
-            <h2>top posts</h2>
-            <ul>
-              <% topPosts.forEach((post, i) => { %>
-                <li class="<%= i === 0 ? 'first-top-item' : '' %>">
-                  <a href="/post/<%= post.id %>/view" class="post-link">
-                    <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
-                    <div class="post-preview-text">
-                        <span><%= post.title %></span>
-                        <p><%= formatDate(post.timestamp) %></p>
-                    </div>
-                </a>
-                </li>
-              <% }); %>
-            </ul>
+        <div id="btn-scr-1" class="center-sec btn-next-1 round-btn">
+          <button class="glass-button">
+            <span class="material-symbols-outlined">
+              arrow_downward_alt
+              </span>
+          </button>
         </div>
-        <a href="/posts" class="button-container">
-          <button class="glass-button">More!</button>
-        </a>
-       
+
+        <div class="round-btn">
+        <button  id="scrollTopButton">
+          <span class="material-symbols-outlined">
+            arrow_upward_alt
+            </span>
+        </button>
+      </div>
+
   </section>
 
-<footer>
 
-<div class="contact-info">
-
-
-    <p style="font-weight: bold;">made by Lucas Uriel</p>
-    <p>Computer Science Student</p>
-
-
- 
-
-    <p style="margin-top: 15px;">Contact me!</p>
-    <a href="">lucas.uriel2002@gmail.com</a>
-
-    <div class="social">
-      <a href="https://www.linkedin.com/in/lucas-uriel/">Linkedin</a>
-      <p>|</p>
-      <a href="https://github.com/LucasUriel2002">GitHub</a>
+  <section> <!--screen 2 -->
+    <div class="presentation center-sec">
+      <img src="\images\pexels-valdemaras-d-1647972.jpg" alt="">
+      <div class="present-text">
+      <h2>Welcome to my Simple Blog</h2>
+      <p>SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE
+        PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT </p>
+      </div>
     </div>
-  
-</div>
+    <div id="btn-scr-2" class="center-sec btn-next-2 round-btn">
+      <button class="glass-button">
+        <span class="material-symbols-outlined">
+          arrow_downward_alt
+          </span>
+      </button>
+    </div>
+  </section>
 
-<div class="project-text">
-  <p>SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE
-     PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT  </p>
-</div>
 
-<div class="">
-  <p>SIMPLE BLOG</p>
-  <div class="logo">B</div>
-</div>
+  <section class="posts-sec"> <!--screen 3 -->
+        <div class="recent-posts posts-index">
+            <h2>Recent posts</h2>
+            <ul>
+                <% top5RecentPosts.forEach(post => { %>
+                  <li class="p-test">
+                    <a href="/post/<%= post.id %>/view" class="post-link">
+                      <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
+                      <div class="post-preview-text">
+                          <span><%= post.title %></span>
+                          <p><%= formatDate(post.timestamp) %></p>
+                      </div>
+                  </a>
+                  </li>
+                <% }); %>
+              </ul>
+        </div>
 
-</footer>
+          <div class="post-exibit posts-index">
+              <h2>top posts</h2>
+              <ul>
+                <% topPosts.forEach((post, i) => { %>
+                  <li class="<%= i === 0 ? 'first-top-item' : '' %>">
+                    <a href="/post/<%= post.id %>/view" class="post-link">
+                      <img src="<%= post.image_path %>" alt="<%= post.title %> Image">
+                      <div class="post-preview-text">
+                          <span><%= post.title %></span>
+                          <p><%= formatDate(post.timestamp) %></p>
+                      </div>
+                  </a>
+                  </li>
+                <% }); %>
+              </ul>
+          </div>
+          <a href="/posts" class="button-container">
+            <button class="glass-button">More!</button>
+          </a>
+        
+    </section>
 
-    </body>
+    <div class="mid-sec-gradient"></div>
+
+    <div class="mid-sec">
+      <p>
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG 
+        LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL LUCAS URIEL
+        SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG SYMPLE BLOG 
+      
+      </p>
+      
+    </div>
+
+    <footer>
+
+    <div class="contact-info">
+
+
+        <p style="font-weight: bold;">made by Lucas Uriel</p>
+        <p>Computer Science Student</p>
+
+
+    
+
+        <p style="margin-top: 15px;">Contact me!</p>
+        <a href="">lucas.uriel2002@gmail.com</a>
+
+        <div class="social">
+          <a href="https://www.linkedin.com/in/lucas-uriel/">Linkedin</a>
+          <p>|</p>
+          <a href="https://github.com/LucasUriel2002">GitHub</a>
+        </div>
+      
+    </div>
+
+    <div class="project-text">
+      <p>SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE
+        PROJECT SOME TEXT ABOUT THE PROJECT SOME TEXT ABOUT THE PROJECT</p>
+    </div>
+
+    <div class="footer-logo">
+      <p>SIMPLE </br> BLOG</p>
+      <div class="logo">B</div>
+    </div>
+
+    </footer>
+
+  </body>
+
     <script src="/public/js/script.js"></script>
+
 </html>
