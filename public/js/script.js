@@ -10,9 +10,12 @@ window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
 
   const x = getComputedStyle(document.documentElement).getPropertyValue("--x");
+  const titlePos = getComputedStyle(document.documentElement).getPropertyValue(
+    "--titlePos"
+  );
 
   if (window.scrollY > x) {
-    titleContainer.style = `position: fixed; top: 2.80%;`;
+    titleContainer.style = `position: fixed; top: ${titlePos};`;
   } else {
     titleContainer.style = `position: absolute;`;
   }

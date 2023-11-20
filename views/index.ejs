@@ -77,8 +77,10 @@
 
 
   <section class="posts-sec"> <!--screen 3 -->
+    <h2>Recent posts</h2>
+    <div class="carousel">
         <div class="recent-posts posts-index">
-            <h2>Recent posts</h2>
+            <!-- <h2>Recent posts</h2> -->
             <ul>
                 <% top5RecentPosts.forEach(post => { %>
                   <li class="p-test">
@@ -93,9 +95,12 @@
                 <% }); %>
               </ul>
         </div>
-
+      </div>
+      <h2>top posts</h2>
+      <div class="carousel">
+        
           <div class="post-exibit posts-index">
-              <h2>top posts</h2>
+              <!-- <h2>top posts</h2> -->
               <ul>
                 <% topPosts.forEach((post, i) => { %>
                   <li class="<%= i === 0 ? 'first-top-item' : '' %>">
@@ -110,6 +115,7 @@
                 <% }); %>
               </ul>
           </div>
+        </div>
           <a href="/posts" class="button-container">
             <button class="glass-button">More!</button>
           </a>

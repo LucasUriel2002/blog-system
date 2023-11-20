@@ -7,24 +7,31 @@
         <link rel="stylesheet"  href="/public/css/style.css">
 
     </head>
-    <body>
+    <body class=" edit-posts-index">
         
-        <!-- <section class="center-sec">
-            <h3>Edit a post</h3>
-            <form class="post-form" action="/edit-post/<%= post.id %>" method="POST">
-            <p>Title</p>
-            <input id="post-title-input" type="text" name="title" required value="<%= post.title %>">
-            <p>Text</p>
-            <textarea id="post-text-input" type="text" rows="5" cols="22" name="text" required><%= post.text %></textarea>
-            <p>Author</p>
-            <input id="post-author-input" type="text" name="author" required value="<%= post.author %>">
-            <button class="submitBtn" type="submit">Submit</button>
-            </form>
-        </section> -->
+        <div class="navbar">
+
+            <a href="/">
+                <div class="logo">B</div>
+                </a>
+    
+            <div class="nav-btns">
+    
+                <a class="nav-btn-1"href="/" style="color: green;">
+                    <label for="submit-label">Done</label>
+                </a>
+    
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+                <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+                </svg>
+                <a class="nav-btn-2" href="/manage-Posts" style="color: red;">Cancel</a>
+            </div>
+            
+            </div>
 
 
         <section class="center-sec add-post-form">
-
+            <h1 class="index-title" style="margin-bottom: 30px;">EDIT POST</h1>
            
             <form class="post-form" action="/edit-post/<%= post.id %>" method="POST">  
 
