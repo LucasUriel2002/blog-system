@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
 <head>
   <link rel="stylesheet" href="/public/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="manage-posts manage-posts-index">
+<body class="manage-posts">
+  <div class="manage-posts-background"></div>
 
   <div class="navbar">
     <a href="/">
@@ -18,28 +21,28 @@
     </div>
   </div>
 
-  <h1 class="index-title" style="margin-top: 30px;">MANAGE POSTS</h1>
+  <h1 class="index-title manage-posts-title">MANAGE POSTS</h1>
 
   <div class="center-sec posts-index posts-sec">
-    
-    <ul>
+    <ul class="carousel-posts">
       <% posts.forEach((post) => { %>
         <li class="p-test">
           <a href="/post/<%= post.id %>/view" class="post-link">
             <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>">
           </a>
-            <div class="post-preview-text">
-              <span><%= post.title %></span>
-              <div class="edit-delete">
-                <a href="/edit-post/<%= post.id %>">Editar</a>
-                <a href="/delete-post/<%= post.id %>">Excluir</a>
-              </div>
-              <p><%= formatDate(post.timestamp) %></p>
+          <div class="post-preview-text">
+            <span><%= post.title %></span>
+            <div class="edit-delete">
+              <a href="/edit-post/<%= post.id %>">Editar</a>
+              <a href="/delete-post/<%= post.id %>">Excluir</a>
+            </div>
+            <p><%= formatDate(post.timestamp) %></p>
           </div> 
         </li>
       <% }); %>
     </ul>
-   
+  </div>
+  
     <div class="pagination center-sec">
 
       <% for (let i = 1; i <= totalPages; i++) { %>
@@ -50,6 +53,8 @@
 
   </div>
 
+
+  
   <footer>
 
     <div class="contact-info">

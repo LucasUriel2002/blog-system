@@ -35,10 +35,11 @@
 Geral Configs
 +=============+
 */
-body {
+html,body {
     font-family: 'Poppins';
     text-decoration: none;
     margin: 0;
+    height: 100%;
     overflow: hidden;
     /* overflow-x: hidden; */
 }
@@ -147,15 +148,22 @@ Background Image Config
     background-repeat: no-repeat;
 }
 
-.manage-posts-index {
+.manage-posts-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: url('/images/pexels-jonathan-aman-756900.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0 -250px;
+    background-position: 0 -250px; 
+    z-index: -10;
     /* overflow-x: hidden; */
 }
 
-.all-posts-index {
+.all-posts-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: url('/images/pexels-mark-soetebier-11126415.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -556,6 +564,7 @@ Form Config
   .post-form .i-4,
   .post-form .i-9 {
     padding: 0;
+    border: none; /* medida paliativa */
  }
 
 
@@ -610,6 +619,9 @@ Manage Posts and Posts Config
     max-width: 1200px;
 }
 
+.manage-posts-title {
+    margin-top: 30px;
+}
 
   .manage-posts ul {
     display: grid;
@@ -676,11 +688,75 @@ Manage Posts and Posts Config
    }
 
 
+ /*
++=============+
+Post Config 
++=============+
+*/
+ .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+
+ .wrapper .navbar {
+    padding: 0;
+ }
+
+ .wrapper .navbar .logo {
+    padding-left: 30px;   
+ }
+
+ .post-body {
+    width: 100%;
+ }
+
+ .post-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 800px;
+    
+  }
+  
+  .image-post {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+
+  .title-post {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+  
+ 
+  .text-post {
+    font-size: 10pt;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+
+  .author-post {
+    font-style: italic;
+    color: #777;
+  }
+  
+
+  
+   
+  
  
 /*
-+=============+
-Media Adjustments
-+=============+
++=====================================================================+
+                        Media Adjustments
++=====================================================================+
 */
 
 
@@ -954,7 +1030,7 @@ Media Adjustments
 
     :root {
         --x: 350; /* Value of the Title Function */
-        --scr-1:800;
+        --scr-1:765;
         --scr-2:1780;
         --titlePos: 10%;
       }
@@ -973,6 +1049,10 @@ index
 
     .title-container {
         width: 100%;
+    }
+
+    .index-title {
+        font-size: 24pt;
     }
 
               /*
@@ -1013,13 +1093,28 @@ presentation
         height: 250px;
         border-radius: 5px;
     }
-    
-    .btn-next-2 {
-        /* top: 1650px;   */
-    }
-    
-    /* //////////////////////// */
+   
+    /*
+Midsec
+*/
 
+    .mid-sec-gradient {
+        width: 100%;
+    }
+
+    .mid-sec {
+        /* border: solid 1px red; */
+        width: 100%;
+    }
+
+    /* .cloud-1,
+    .cloud-2 {
+        display: none;
+    } */
+
+              /*
+Posts section
+*/
     .posts-sec {
         /* border: solid 1px red; */
         width: 100%;
@@ -1030,23 +1125,31 @@ presentation
         display: flex;
         flex-direction: column;
         margin: 0 auto;
-        top: 1600px; 
+        top: 1780px; 
         /* overflow: hidden; */
     }
+
+    .posts-sec h2 {
+       margin-top: 10px;
+       margin-bottom: 0;
+    }
+
 
     .carousel {
         display: flex;
         overflow-x: auto;
         scroll-behavior: smooth;
+
     }
     
     
     .posts-index ul {
         display: flex;
         flex-direction: row;
-        gap: 20px;
+        gap: 5px;
         padding: 0;
         justify-content: center; 
+        
     }
     
     .posts-index li {
@@ -1057,6 +1160,7 @@ presentation
         background-color: rgba(255, 255, 255, 0.9);
         overflow: hidden;
         box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 0.55);
+        scale: 0.9;
     }
     
     .posts-index li .post-preview-text p {
@@ -1100,19 +1204,50 @@ presentation
         justify-content: center;
     }
 
-    .mid-sec-gradient {
-        width: 100%;
+     /* clouds configs */
+     .cloud-1 {
+        position: absolute;
+        opacity: 50%;
+        width: 330px;
+        height: 300px;
+        top: 700px;
+        left: -100px;
+        z-index: -1;
+        /* border: 5px red solid; */
+
     }
 
-    .mid-sec {
-        /* border: solid 1px red; */
-        width: 100%;
-    }
-
-    .cloud-1,
     .cloud-2 {
-        display: none;
+        position: absolute;
+        /* opacity: 50%; */
+        width: 300px;
+        height: 150px;
+        top: 1400px;
+        left: 40px;
+        z-index: -1;
+        /* border: 5px red solid; */
+       
     }
+
+     .title-post {
+        font-size: 18pt;
+      }
+    
+      .text-post {
+        font-size: 8pt;
+      }
+
+      .post-container {
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-height: 700px;
+        
+      }
+
+
 
     /*
 +=============+
@@ -1121,59 +1256,122 @@ Navbar
 */
 
 /* navbar */
-.navbar {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: fixed;
+        top: 2%;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    .logo {
+        margin-left: 10px; 
+    }
+
+    .nav-btns {
+        width: 238px;
+        height: 50px;
+        margin-right: 35px;
+        scale: 0.9;
+        /* padding: 5px 30px 5px 30px; */
+    }
+
+
+    /*
++=============+
+Footer
++=============+
+*/
+
+    footer {
+        top: 2500px;
+    }
+
+    .project-text {
+        visibility: hidden;
+    }
+
+
+    /*
++=============+
+Manage Posts
++=============+
+*/
+
+
+
+.manage-posts-title {
+    margin-top: 120px;
+    z-index: 30;
+}
+
+.manage-posts-background {
+height: 118vh;
+    /* overflow-x: hidden; */
+}
+
+.manage-posts .posts-index.posts-sec {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: fixed;
-    top: 2%;
-    left: 0;
-    right: 0;
+    top: 15%;
+    justify-content: start;
+    gap: 20px;
+    padding: 20px 0;
+    max-height: 540px; /* Altura máxima do carrossel */
+    overflow-y: auto ; /* Adicione a propriedade overflow-y */
+  }
+  
+  .manage-posts .carousel-posts {
+    list-style: none;
     width: 100%;
-}
-
-.logo {
-    font-family: var(--Monoton);
-    font-size: 50px;
-    margin-left: 0; 
-    text-shadow: 3px 3px 3px rgba(0,0,0,0.59);
-}
-
-.nav-btns {
+    padding: 0;
+    margin: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 238px;
-    height: 50px;
-    margin-right: 20px;
-    font-family: var(--Lexend);
-    font-size: 20px;
-    background-color: white;
-    border-radius: 30px;
-    /* padding: 5px 30px 5px 30px; */
-}
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+    align-items: flex-start;
+    /* Remova overflow: hidden; para permitir rolagem */
+  }
+  
+  .manage-posts .carousel-posts li {
+    min-width: calc(50% - 20px); /* Ajuste conforme necessário */
+    min-height: 300px; /* Altura mínima dos itens */
+    scroll-snap-align: start;
+    flex: 1 0 auto;
+  }
 
-.nav-btn-1 {
-    position: fixed;
-    margin-right: 110px;
-}
+  .pagination {
+    top: 82vh;
+  }
 
-.nav-btn-2 {
-    position: fixed;
-    margin-left: 110px;
-}
+  .manage-posts footer {
+    top: 85vh;
+    height: 130px ;
+  }
 
+  .post-preview-text {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
 
-footer {
-    top: 2500px;
-}
+  .post-preview-text a { 
+    align-self: center;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: ease-in 1s;
+  }
 
-
-
-
-
-
+  .post-preview-text a :hover { 
+    background-color: gainsboro;
+  }
+  
 
 
 

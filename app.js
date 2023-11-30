@@ -199,17 +199,25 @@ app.get("/delete-post/:id", (req, res) => {
 app.get("/post/:id", function (req, res) {
   const postID = req.params.id;
 
-  postController.getPostByID(postID, (error, post) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send("Error retrieving post");
-    } else {
-      if (post) {
-        res.render("post", { post });
-      } else {
-        res.status(404).send("Post not found");
-      }
+  postController.getTopPosts((errorTop, topPosts) => {
+    if (errorTop) {
+      console.log(errorTop);
+      res.status(500).send("Error retrieving top posts");
+      return;
     }
+
+    postController.getPostByID(postID, (error, post) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send("Error retrieving post");
+      } else {
+        if (post) {
+          res.render("post", { post, topPosts });
+        } else {
+          res.status(404).send("Post not found");
+        }
+      }
+    });
   });
 });
 

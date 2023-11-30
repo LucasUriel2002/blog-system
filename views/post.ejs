@@ -2,18 +2,60 @@
 <html>
 <head>
     <title><%= post.title %></title>
-    <link rel="stylesheet"  href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
-    <div class="center-sec">
-    <h1><%= post.title %></h1>
-    <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>">
-    <p><%= post.text %></p>
-    <p>Author: <%= post.author %></p>
+
+<body class="post-body">
+  
+<div class="wrapper">
+    
+  <div class="navbar">
+    <a href="/">
+      <div class="logo">B</div>
+      </a>
+    <div class="nav-btns">
+      <a class="nav-btn-1" href="/add-post">+ Add</a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="30">
+        <line x1="5" y1="0" x2="5" y2="30" stroke="black" />
+      </svg>
+      <a class="nav-btn-2" href="/manage-posts">Manage</a>
     </div>
+  </div>
+        
+    <div class="post-container">
+        <img src="/<%= post.image_path %>" alt="Image for <%= post.title %>" class="image-post">
+        <h1 class="title-post"><%= post.title %></h1>
+        <p class="text-post"><%= post.text %></p>
+        <p class="author-post">Author: <%= post.author %></p>
+    </div>
+
+</div>
+
+
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imagePath = "/<%= post.image_path.replace(/\\/g, '/') %>";
+            document.body.style.backgroundImage = `url('${imagePath}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.classList.add("blur");
+            // document.body.style.width = '100%%';
+        });
+    </script>
+
+<style>
+  .blur {
+    backdrop-filter: blur(8px);
+  }
+</style>
+    
+
+
 </body>
 
 <script src="/public/js/script.js"></script>
-
 </html>
