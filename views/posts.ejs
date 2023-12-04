@@ -21,11 +21,11 @@
     </div>
   </div>
 
-  <h1 class="index-title" style="margin-top: 30px;">ALL POSTS</h1>
+  <h1 class="index-title manage-posts-title">ALL POSTS</h1>
 
   <div class="center-sec posts-index posts-sec">
     
-    <ul>
+    <ul class="carousel-posts">
       <% posts.forEach((post) => { %>
         <li class="p-test">
           <a href="/post/<%= post.id %>/view" class="post-link">
@@ -39,16 +39,16 @@
       <% }); %>
     </ul>
    
-    <div class="pagination center-sec">
 
-      <% for (let i = 1; i <= totalPages; i++) { %>
-        <a href="/posts/<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
-      <% } %>
-
-    </div>
 
   </div>
+  <div class="pagination center-sec">
 
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <a href="/posts/<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+
+  </div>
   <footer>
 
     <div class="contact-info">

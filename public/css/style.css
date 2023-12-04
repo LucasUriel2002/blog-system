@@ -168,6 +168,7 @@ Background Image Config
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 -100px;
+    z-index: -10;
     /* overflow-x: hidden; */
 }
 
@@ -231,7 +232,7 @@ footer {
     display: flex;
     flex-direction: row;
     margin-right: 20px;
-    align-items: center;
+    align-items:flex-start;
     text-align: center;
 }
 
@@ -538,6 +539,7 @@ Form Config
  .post-form .i-2,
  .post-form .i-5,
  .post-form .i-7 {
+    
     font-weight: bolder;
     padding: 0;   
     margin: 0;
@@ -549,6 +551,7 @@ Form Config
   .post-form .i-4,
   .post-form .i-8,
   .post-form .i-9 {
+    border-radius: 5px;
     grid-column: span 1;
     display: flex;
     margin: 0;
@@ -564,12 +567,11 @@ Form Config
   .post-form .i-4,
   .post-form .i-9 {
     padding: 0;
-    border: none; /* medida paliativa */
+    border: none; 
  }
 
-
-  
   .post-form .i-6 {
+    border-radius: 5px;
     grid-row: span 10;
     grid-column: span 2;
   }
@@ -577,7 +579,6 @@ Form Config
     grid-column: span 2;
   }
   
-
   .image-input {
     position: relative;
     overflow: hidden;
@@ -623,70 +624,65 @@ Manage Posts and Posts Config
     margin-top: 30px;
 }
 
-  .manage-posts ul {
+.manage-posts ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /*4 columns per row*/
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     padding: 0;
     list-style: none;
-    justify-items: center; /* Adicione esta linha para centralizar horizontalmente */
-  }
-  
-  .manage-posts li {
+    justify-items: center; 
+}
+
+.manage-posts li {
     text-align: left;
     box-sizing: border-box;
-    /* background-color: rgba(34, 15, 14,1 );
-    box-shadow: -1px 1px 17px 1px rgba(0, 0, 0, 1); */
-  }
-  
-  .manage-posts .post-list h2 {
+}
+
+.manage-posts .post-list h2 {
     font-size: 1.2rem;
     margin: 0;
-  }
-  
-  .manage-posts .post-list p {
-    margin: 10px 0;
-  }
-  
-  .manage-posts footer {
-    top: 837px;
-  }   
+}
 
-  .edit-delete {
+.manage-posts .post-list p {
+    margin: 10px 0;
+}
+
+.manage-posts footer {
+    top: 89vh;
+}
+
+.edit-delete {
     display: flex;
     flex-direction: row;
     gap: 10px;
-  }
+}
   
- .edit-delete :hover {
+.edit-delete :hover {
     color: #d9d9d9;
-  }
+}
 
-  .pagination {
-   top: 600px;
-   width: 50%;
-   justify-content: center;
-   display: flex;
-   text-align: center;
-   top: 600px;
-   gap: 10px;
-  }
+.pagination {
+    top: 80vh;
+    width: 50%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    gap: 10px;
+}
 
-  
-  .pagination :hover{
+.pagination :hover{
     transition: 300ms;
     background-color: #d9d9d9;
-   }
+}
 
-  .pagination a {
+.pagination a {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background-color: white;
     text-align: center;
     border: 1px solid #d9d9d9;
-   }
-
+}
 
  /*
 +=============+
@@ -715,17 +711,16 @@ Post Config
 
  .post-container {
     max-width: 500px;
+    max-height: 800px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: 800px;
-    
   }
   
   .image-post {
     max-width: 100%;
-    height: auto;
+    max-height: 400px ;
     margin-bottom: 20px;
   }
   
@@ -858,6 +853,10 @@ Post Config
         top: 622px;
     }
 
+    .pagination {
+        top: 580px;
+    }
+
     /*
     +=============+
     Forms Config
@@ -906,14 +905,14 @@ Post Config
         padding-top: 5px;
     }  
 
- .contact-info {
-       font-size: 8pt;
-       line-height: 1px;
-    }  
+    .contact-info {
+        font-size: 8pt;
+        line-height: 1px;
+        }  
 
-.project-text {
+    .project-text {
         font-size: 8pt;  
-     } 
+        } 
 
 
     /*
@@ -999,8 +998,15 @@ Post Config
     }
 
     .manage-posts footer {
-        top: 550px;
+        top: 85vh;
+        height: 130px;
+      }
+    
+
+    .pagination {
+        top: 520px;
     }
+
 
     /*
     +=============+
@@ -1107,10 +1113,7 @@ Midsec
         width: 100%;
     }
 
-    /* .cloud-1,
-    .cloud-2 {
-        display: none;
-    } */
+
 
               /*
 Posts section
@@ -1134,14 +1137,12 @@ Posts section
        margin-bottom: 0;
     }
 
-
     .carousel {
         display: flex;
         overflow-x: auto;
         scroll-behavior: smooth;
 
     }
-    
     
     .posts-index ul {
         display: flex;
@@ -1302,8 +1303,6 @@ Manage Posts
 +=============+
 */
 
-
-
 .manage-posts-title {
     margin-top: 120px;
     z-index: 30;
@@ -1311,7 +1310,7 @@ Manage Posts
 
 .manage-posts-background {
 height: 118vh;
-    /* overflow-x: hidden; */
+/* overflow-x: hidden; */
 }
 
 .manage-posts .posts-index.posts-sec {
@@ -1320,60 +1319,116 @@ height: 118vh;
     justify-content: start;
     gap: 20px;
     padding: 20px 0;
-    max-height: 540px; /* Altura máxima do carrossel */
-    overflow-y: auto ; /* Adicione a propriedade overflow-y */
+    max-height: 540px; 
+    overflow-y: auto ; 
   }
   
-  .manage-posts .carousel-posts {
-    list-style: none;
+.manage-posts .carousel-posts {
+list-style: none;
+width: 100%;
+padding: 0;
+margin: 0;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: start;
+align-items: flex-start;
+}
+
+.manage-posts .carousel-posts li {
+min-width: calc(50% - 20px); 
+min-height: 300px; 
+scroll-snap-align: start;
+flex: 1 0 auto;
+}
+
+.pagination {
+top: 82vh;
+}
+
+.manage-posts footer {
+top: 85vh;
+height: 130px;
+}
+
+.post-preview-text {
+margin-top: 12px;
+display: flex;
+flex-direction: row;
+width: 80%;
+}
+
+.post-preview-text a { 
+align-self: center;
+padding: 5px;
+border-radius: 10px;
+border: 1px solid black;
+transition: ease-in 1s;
+}
+
+.post-preview-text a :hover { 
+background-color: gainsboro;
+}
+
+    /*
++=============+
+Post
++=============+
+*/
+
+.image-post {
+max-width: 100%;
+max-height: 400px ;
+margin-bottom: 20px;
+}
+
+.post-container {
+    max-width: 80%;
+}
+
+    /*
++=============+
+Add-Post/
++=============+
+*/
+
+.add-post-form {
     width: 100%;
     padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: start;
-    align-items: flex-start;
-    /* Remova overflow: hidden; para permitir rolagem */
-  }
-  
-  .manage-posts .carousel-posts li {
-    min-width: calc(50% - 20px); /* Ajuste conforme necessário */
-    min-height: 300px; /* Altura mínima dos itens */
-    scroll-snap-align: start;
-    flex: 1 0 auto;
-  }
+}
 
-  .pagination {
-    top: 82vh;
-  }
+.add-post-form .index-title {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
 
-  .manage-posts footer {
-    top: 85vh;
-    height: 130px ;
-  }
+.form-title {
+    text-align: center;
+    font-size: 64px;
+    font-family: var(--Lexend-Giga);
+}
 
-  .post-preview-text {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
+.post-form {
+    transform: scale(0.9); 
+    width: 100%;
+    height: 570px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    text-align: left;
+    border-radius: none;
+    background: none; 
+    box-shadow: none;
+    padding: 0;
   }
 
-  .post-preview-text a { 
-    align-self: center;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid black;
-    transition: ease-in 1s;
-  }
+.post-form .i-4 {
+    font-size: 9pt;
+}
 
-  .post-preview-text a :hover { 
-    background-color: gainsboro;
-  }
-  
-
-
+.add-posts-index .navbar {
+    max-width: 100%;
+}
 
 
 
